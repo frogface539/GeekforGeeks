@@ -12,24 +12,36 @@ class Solution {
     // largest elements
     int getSecondLargest(vector<int> &arr) {
         // Code Here
-        int maxi = arr[0];
-        int secMaxi = -1;
-        
-        if(arr.size() < 2){
-            return -1;
-        }
-        
-        for(int i = 1 ; i<arr.size() ; i++){
-            if(arr[i] > maxi){
-                secMaxi = maxi;
-                maxi = arr[i];
+        //Brute Force
+        sort(arr.begin() , arr.end());
+        int largest = arr[arr.size()-1];
+        int secondLargest;
+        for(int i = arr.size()-2 ; i>=0 ;  i--){
+            if(arr[i] != largest){
+                secondLargest = arr[i];
+                return secondLargest;
             }
+        }
+        return -1;
+        
+    //     int maxi = arr[0];
+    //     int secMaxi = -1;
+        
+    //     if(arr.size() < 2){
+    //         return -1;
+    //     }
+        
+    //     for(int i = 1 ; i<arr.size() ; i++){
+    //         if(arr[i] > maxi){
+    //             secMaxi = maxi;
+    //             maxi = arr[i];
+    //         }
             
-            else if(arr[i] > secMaxi && arr[i] < maxi){
-                secMaxi = arr[i];
-            }
-        }
-        return secMaxi;
+    //         else if(arr[i] > secMaxi && arr[i] < maxi){
+    //             secMaxi = arr[i];
+    //         }
+    //     }
+    //     return secMaxi;
     }
 };
 
